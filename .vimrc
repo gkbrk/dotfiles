@@ -2,8 +2,31 @@ set nocompatible
 filetype indent plugin on
 syntax on "Syntax highlighting
 
+set guifont=Monospace\ 12
+set colorcolumn=80 "Draw line at 80 columns
+
 let maplocalleader = ","
 execute pathogen#infect()
+
+"Pathogen plugins
+"https://github.com/rust-lang/rust.vim.git
+"https://github.com/ervandew/supertab.git
+"https://github.com/kien/ctrlp.vim.git
+"https://github.com/othree/html5.vim.git
+"https://github.com/jceb/vim-orgmode.git
+"https://github.com/vim-scripts/utl.vim.git
+"https://github.com/tpope/vim-speeddating.git
+
+"GUI settings
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+
+"Make latex fast again
+au FileType tex setlocal nocursorline
+
+"Default vimwiki
+  let g:vimwiki_list = [{'path': '~/notebook', 'syntax': 'markdown', 'ext': '.md'}]
 
 set number "Show line numbers
 set wildmenu "Complete Vim commands

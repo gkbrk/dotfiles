@@ -1,0 +1,36 @@
+#export TERM=xterm-256color
+export TERM=screen-256color
+PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+
+export GOPATH=~/.go
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:~/Android/Sdk/tools/"
+export PATH="$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin"
+
+export ANDROID_HOME="/home/leonardo/Android/Sdk"
+
+alias listenmoe="mpv http://listen.moe:9999/stream > /dev/null"
+
+alias server="ssh root@gkbrk.com"
+alias proxy="ssh -D 1080 root@gkbrk.com"
+alias sb="source ~/.bashrc"
+
+cowerinstall() {
+    pushd ~/cower/
+    rm -rfv "$1"
+    cower -d "$1"
+    cd "$1"
+    makepkg -sri
+    popd
+}
+
+export TODOTXT_DEFAULT_ACTION=ls
+alias t='todo.sh -d ~/.todo/config'
+
+alias ed='ed -p"🔥 > "'
+alias bc='bc -l'
+alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
+alias :wq=exit
+
+stty stop undef
+stty start undef

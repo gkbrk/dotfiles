@@ -11,14 +11,22 @@ exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Tapping Enable
 exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Accel Speed' -0.8
 
 # Keyboard settings
-exec --no-startup-id setxkbmap tr
+exec_always --no-startup-id setxkbmap us
 exec_always --no-startup-id xset r rate 200 20
+
+# Keyboard switching
+bindsym $mod+t exec --no-startup-id setxkbmap tr
+bindsym $mod+u exec --no-startup-id setxkbmap us
 
 # Screen timeout
 exec_always --no-startup-id xset s off -dpms
 
 # Custom startup
 exec --no-startup-id redshift
+exec --no-startup-id fcitx
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-scale /home/leonardo/Desktop/Unorganized/wallpaper-fairytail.jpg
 
 # Volume keybindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%

@@ -12,7 +12,6 @@ general {
 }
 
 order += "volume master"
-order += "cmus"
 order += "disk /"
 order += "wireless _first_"
 order += "ethernet _first_"
@@ -34,7 +33,7 @@ wireless _first_ {
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip"
-        format_down = ""
+        format_down = "E: down"
 }
 
 battery 0 {
