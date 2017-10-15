@@ -14,6 +14,13 @@ exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Accel Speed' -
 exec_always --no-startup-id setxkbmap us
 exec_always --no-startup-id xset r rate 200 20
 
+# Input device settings
+#input '2:7:SynPS/2_Synaptics_TouchPad' {
+#    tap enabled
+#    natural_scroll enabled
+#    dwt enabled
+#}
+
 # Keyboard switching
 bindsym $mod+t exec --no-startup-id setxkbmap tr
 bindsym $mod+u exec --no-startup-id setxkbmap us
@@ -27,6 +34,7 @@ exec --no-startup-id fcitx
 
 # Wallpaper
 exec_always --no-startup-id feh --bg-scale /home/leonardo/Desktop/Unorganized/wallpaper-fairytail.jpg
+#output eDP-1 background /home/leonardo/Desktop/Unorganized/wallpaper-fairytail.jpg stretch
 
 # Volume keybindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
@@ -168,6 +176,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

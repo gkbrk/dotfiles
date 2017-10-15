@@ -1,6 +1,7 @@
 ; MELPA Packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
 (setq-default indent-tabs-mode nil)
@@ -12,13 +13,9 @@
 ; Disable backup files
 (setq make-backup-files nil)
 
-;org-mode stuff
-(setq org-agenda-files (quote ("~/org"
-                               )))
-
 ; Evil mode
-;(require 'evil)
-;(evil-mode 1)
+(require 'evil)
+(evil-mode 1)
 
 (smart-tab-mode 1)
 

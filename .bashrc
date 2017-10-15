@@ -9,6 +9,11 @@ export PATH="$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin"
 
 export ANDROID_HOME="/home/leonardo/Android/Sdk"
 
+# Unlimited bash history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTCONTROL=erasedups
+
 alias listenmoe="mpv http://listen.moe:9999/stream > /dev/null"
 
 alias server="ssh root@gkbrk.com"

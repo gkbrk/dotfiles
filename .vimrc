@@ -25,9 +25,6 @@ execute pathogen#infect()
 "Make latex fast again
 au FileType tex setlocal nocursorline
 
-"Default vimwiki
-  let g:vimwiki_list = [{'path': '~/notebook', 'syntax': 'markdown', 'ext': '.md'}]
-
 set number "Show line numbers
 set wildmenu "Complete Vim commands
 set cursorline "Highlight the cursor line
