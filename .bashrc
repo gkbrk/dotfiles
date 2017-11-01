@@ -16,8 +16,8 @@ export HISTCONTROL=erasedups
 
 alias listenmoe="mpv http://listen.moe:9999/stream > /dev/null"
 
-alias server="ssh root@gkbrk.com"
-alias proxy="ssh -D 1080 root@gkbrk.com"
+alias server="ssh core@gkbrk.com"
+alias proxy="ssh -D 1080 core@gkbrk.com"
 alias sb="source ~/.bashrc"
 
 cowerinstall() {
@@ -36,6 +36,12 @@ alias ed='ed -p"🔥 > "'
 alias bc='bc -l'
 alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias :wq=exit
+
+notebook() {
+    pushd /home/leonardo/Notebook
+    vim Home.txt
+    popd
+}
 
 stty stop undef
 stty start undef
