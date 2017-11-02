@@ -43,5 +43,9 @@ notebook() {
     popd
 }
 
+journal() {
+    vim "$HOME/Notebook/Journal/$(date +%Y/%Y-%m-%d).txt"
+}
+
 stty stop undef
 stty start undef
