@@ -5,7 +5,9 @@ PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
 export GOPATH=~/.go
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:~/Android/Sdk/tools/"
-export PATH="$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin"
+export PATH="$PATH:~/.cargo/bin/"
+
+source /etc/profile.d/rvm.sh
 
 export ANDROID_HOME="/home/leonardo/Android/Sdk"
 
@@ -39,12 +41,22 @@ alias :wq=exit
 
 notebook() {
     pushd /home/leonardo/Notebook
-    vim Home.txt
+    vim Home.md
     popd
 }
 
 journal() {
-    vim "$HOME/Notebook/Journal/$(date +%Y/%Y-%m-%d).txt"
+    vim "$HOME/Notebook/Journal/$(date +%Y-%m-%d).md"
+}
+
+notebook_todo() {
+    echo "\`\`\`" > "$HOME/Notebook/NotebookTasks.md"
+    grep -r "TODO" "$HOME/Notebook" | sed "s@$HOME/Notebook/@@" >> "$HOME/Notebook/NotebookTasks.md"
+    echo "\`\`\`" >> "$HOME/Notebook/NotebookTasks.md"
+}
+
+keychain-lock() {
+    python3 -c 'import secretstorage;bus=secretstorage.dbus_init();secretstorage.get_default_collection(bus).lock()'
 }
 
 stty stop undef
