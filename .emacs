@@ -33,6 +33,10 @@
 
 (require 'todotxt)
 
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox-nightly")
+
+(setq easy-hugo-basedir "~/Desktop/website/blog/")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
