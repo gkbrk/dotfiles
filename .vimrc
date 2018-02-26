@@ -2,6 +2,9 @@ set nocompatible
 filetype indent plugin on
 syntax on "Syntax highlighting
 
+" Set to auto read when a file is changed from the outside
+set autoread
+
 set guifont=Monospace\ 12
 set colorcolumn=80 "Draw line at 80 columns
 
@@ -23,7 +26,8 @@ execute pathogen#infect()
 :set guioptions-=r  "remove right-hand scroll bar
 
 "Make latex fast again
-au FileType tex setlocal nocursorline
+autocmd FileType tex setlocal nocursorline
+autocmd BufNewFile,BufFilePre,BufRead *.txt set filetype=markdown
 
 set number "Show line numbers
 set wildmenu "Complete Vim commands
@@ -43,6 +47,7 @@ set linebreak "Only break at words
 
 "Open file explorer
 nmap - :Explore<Enter>
+nmap <Tab><Tab> :Files<Enter>
 
 "Tab keymaps
 nmap tt :tabnew<Enter>
