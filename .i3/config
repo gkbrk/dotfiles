@@ -1,5 +1,5 @@
 # gkbrk's i3 Config
-set $mod Mod1
+set $mod Mod4
 font pango:monospace 8
 
 # Custom config start
