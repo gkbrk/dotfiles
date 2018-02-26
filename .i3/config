@@ -37,8 +37,8 @@ exec_always --no-startup-id feh --bg-scale /home/leonardo/Desktop/Unorganized/wa
 #output eDP-1 background /home/leonardo/Desktop/Unorganized/wallpaper-fairytail.jpg stretch
 
 # Volume keybindings
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
 # Music player keybindings
