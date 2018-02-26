@@ -9,6 +9,17 @@
 (global-set-key (kbd "M--") 'previous-buffer)
 (global-set-key (kbd "C-t") 'ido-switch-buffer)
 
+(defun fancy-tab (arg)
+  (interactive "P")
+  (setq this-command last-command)
+  (if (or (eq this-command 'hippie-expand) (looking-at "\\_>"))
+      (progn
+	(setq this-command 'hippie-expand)
+	(hippie-expand arg))
+    (setq this-command 'indent-for-tab-command)
+    (indent-for-tab-command arg)))
+(global-set-key (kbd "TAB") 'fancy-tab)
+
 ; Disable backup files
 (setq make-backup-files nil)
 
