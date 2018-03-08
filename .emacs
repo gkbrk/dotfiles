@@ -36,6 +36,8 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox-nightly")
 
+(setq org-agenda-files '("~/Notebook/"))
+(setq org-agenda-skip-unavailable-files t)
 (setq easy-hugo-basedir "~/Desktop/website/blog/")
 
 (custom-set-variables
