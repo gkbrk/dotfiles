@@ -39,6 +39,18 @@ alias bc='bc -l'
 alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias :wq=exit
 
+org-text() {
+    emacs --batch -l .emacs Notebook/notes.org --eval '(org-mode)' \
+          --eval "(org-ascii-export-as-ascii nil nil nil nil '(:ascii-charset utf-8))" \
+          --eval '(princ (buffer-string))'
+}
+
+org-search() {
+    emacs --batch -l .emacs Notebook/notes.org --eval '(org-mode)' --eval "(search-forward \"$1\")" \
+          --eval "(org-ascii-export-as-ascii nil t nil nil '(:ascii-charset utf-8))" \
+          --eval '(princ (buffer-string))'
+}
+
 notebook() {
     pushd /home/leonardo/Notebook
     vim Home.md
