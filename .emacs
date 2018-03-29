@@ -12,13 +12,14 @@
 (defun fancy-tab (arg)
   (interactive "P")
   (setq this-command last-command)
-  (if (or (eq this-command 'hippie-expand) (looking-at "\\_>"))
+  (if (or (eq this-command 'company-try-hard) (looking-at "\\_>"))
       (progn
-	(setq this-command 'hippie-expand)
-	(hippie-expand arg))
+	(setq this-command 'company-try-hard)
+	(company-try-hard arg))
     (setq this-command 'indent-for-tab-command)
     (indent-for-tab-command arg)))
 (global-set-key (kbd "TAB") 'fancy-tab)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ; Disable backup files
 (setq make-backup-files nil)
@@ -62,7 +63,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
+    (company-try-hard company json-mode haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
  '(todotxt-file "/home/leonardo/Sync/default/todo.txt" nil (todotxt))
