@@ -41,6 +41,12 @@
 (setq org-agenda-skip-unavailable-files t)
 (setq easy-hugo-basedir "~/Desktop/website/blog/")
 
+(defun notes ()
+  (interactive)
+  (find-file "~/Notebook/notes.org")
+  )
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
