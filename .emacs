@@ -15,7 +15,7 @@
   (if (or (eq this-command 'company-try-hard) (looking-at "\\_>"))
       (progn
 	(setq this-command 'company-try-hard)
-	(company-try-hard arg))
+	(company-try-hard))
     (setq this-command 'indent-for-tab-command)
     (indent-for-tab-command arg)))
 (global-set-key (kbd "TAB") 'fancy-tab)
