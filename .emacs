@@ -39,6 +39,27 @@
 
 (setq org-agenda-files '("~/Notebook/"))
 (setq org-agenda-skip-unavailable-files t)
+(setq org-log-done 'time)
+
+(defun org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (outline-previous-heading)))
+   "/DONE" 'file))
+
+(require 'org)
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted) 
+
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+(setq org-src-fontify-natively t)
+
 (setq easy-hugo-basedir "~/Desktop/website/blog/")
 
 (defun notes ()
@@ -61,7 +82,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(custom-safe-themes
    (quote
-    ("599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
+    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
  '(fci-rule-color "#383838")
  '(inhibit-startup-screen t)
  '(nrepl-message-colors
