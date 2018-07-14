@@ -6,8 +6,7 @@ export GOPATH=~/.go
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:~/Android/Sdk/tools/"
 export PATH="$PATH:~/.cargo/bin/"
-
-source /etc/profile.d/rvm.sh
+export PATH="$PATH:/home/leonardo/.gem/ruby/2.5.0/bin"
 
 export ANDROID_HOME="/home/leonardo/Android/Sdk"
 
@@ -18,8 +17,8 @@ export HISTCONTROL=erasedups
 
 alias listenmoe="mpv http://listen.moe:9999/stream > /dev/null"
 
-alias server="ssh core@gkbrk.com"
-alias proxy="ssh -D 1080 core@gkbrk.com"
+alias server="ssh ubuntu@server.gkbrk.com"
+alias proxy="ssh -D 1080 ubuntu@server.gkbrk.com"
 alias sb="source ~/.bashrc"
 
 cowerinstall() {
