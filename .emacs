@@ -41,6 +41,9 @@
 (setq org-agenda-skip-unavailable-files t)
 (setq org-log-done 'time)
 
+(setq org-capture-templates
+  '(("j" "Journal" entry (file+olp+datetree "~/Notebook/notes.org") "* %?\n")))
+
 (defun org-archive-done-tasks ()
   (interactive)
   (org-map-entries
