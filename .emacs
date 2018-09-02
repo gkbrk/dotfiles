@@ -34,6 +34,8 @@
 
 (require 'todotxt)
 
+(setq inferior-lisp-program "sbcl")
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox-nightly")
 
@@ -85,7 +87,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(custom-safe-themes
    (quote
-    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
+    ("190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
  '(fci-rule-color "#383838")
  '(inhibit-startup-screen t)
  '(nrepl-message-colors
@@ -93,7 +95,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (company-try-hard company json-mode haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
+    (slime aggressive-indent paredit parinfer elisp-format lispy company-try-hard company json-mode haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
  '(todotxt-file "/home/leonardo/Sync/default/todo.txt" nil (todotxt))
