@@ -93,9 +93,10 @@
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+ '(org-agenda-files (quote ("~/Sync/work/viagogo/work_diary.org")))
  '(package-selected-packages
    (quote
-    (slime aggressive-indent paredit parinfer elisp-format lispy company-try-hard company json-mode haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
+    (linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
  '(todotxt-file "/home/leonardo/Sync/default/todo.txt" nil (todotxt))
