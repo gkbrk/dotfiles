@@ -24,15 +24,16 @@
 ; Disable backup files
 (setq make-backup-files nil)
 
+
 (setq-default fill-column 80)
-(global-linum-mode t)
+(linum-relative-global-mode t) ; Relative line numbers
+
+(column-number-mode t)
 
 ; Evil mode
 (require 'evil)
 (evil-mode 1)
 (global-set-key (kbd "M-=") 'evil-mode)
-
-(require 'todotxt)
 
 (setq inferior-lisp-program "sbcl")
 
@@ -65,13 +66,10 @@
 
 (setq org-src-fontify-natively t)
 
-(setq easy-hugo-basedir "~/Desktop/website/blog/")
-
 (defun notes ()
   (interactive)
   (find-file "~/Notebook/notes.org")
   )
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -87,7 +85,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(custom-safe-themes
    (quote
-    ("190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
+    ("89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
  '(fci-rule-color "#383838")
  '(inhibit-startup-screen t)
  '(nrepl-message-colors
@@ -96,10 +94,9 @@
  '(org-agenda-files (quote ("~/Sync/work/viagogo/work_diary.org")))
  '(package-selected-packages
    (quote
-    (linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode haml-mode magit neotree web-mode easy-hugo haskell-mode todotxt zenburn-theme rust-mode tabbar markdown-mode evil)))
+    (linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
- '(todotxt-file "/home/leonardo/Sync/default/todo.txt" nil (todotxt))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
