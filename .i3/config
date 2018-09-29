@@ -8,7 +8,7 @@ font pango:monospace 8
 set $mouse_id 'SynPS/2 Synaptics TouchPad'
 exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Natural Scrolling Enabled' 1
 exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Tapping Enabled' 1
-exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Accel Speed' -0.8
+exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Accel Speed' -0.3
 
 # Keyboard settings
 exec_always --no-startup-id setxkbmap us
