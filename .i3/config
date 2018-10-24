@@ -8,7 +8,7 @@ font pango:monospace 8
 set $mouse_id 'SynPS/2 Synaptics TouchPad'
 exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Natural Scrolling Enabled' 1
 exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Tapping Enabled' 1
-exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Accel Speed' -0.8
+exec_always --no-startup-id xinput --set-prop $mouse_id 'libinput Accel Speed' -0.3
 
 # Keyboard settings
 exec_always --no-startup-id setxkbmap us
@@ -39,7 +39,7 @@ exec_always --no-startup-id feh --bg-scale /home/leonardo/Desktop/Unorganized/wa
 # Volume keybindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Music player keybindings
 bindsym Ctrl+F4 exec --no-startup-id cmus-remote -r
