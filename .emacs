@@ -108,9 +108,10 @@
  '(org-agenda-files (quote ("~/Sync/work/viagogo/work_diary.org")))
  '(package-selected-packages
    (quote
-    (linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
+    (todotxt linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
+ '(todotxt-file "~/TinySync/todo.txt" nil (todotxt))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
