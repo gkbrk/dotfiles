@@ -10,7 +10,17 @@
 (global-set-key (kbd "M--") 'previous-buffer)
 (global-set-key (kbd "C-t") 'ido-switch-buffer)
 
-(global-set-key (kbd "<apps>") 'hippie-expand)
+(defun fancy-tab (arg)
+  (interactive "P")
+  (setq this-command last-command)
+  (if (or (eq this-command 'dabbrev-expand) (looking-at "\\_>"))
+      (progn
+	(setq this-command 'dabbrev-expand)
+	(dabbrev-expand arg))
+    (setq this-command 'indent-for-tab-command)
+    (indent-for-tab-command arg)))
+(global-set-key (kbd "TAB") 'fancy-tab)
+
 (add-hook 'after-init-hook 'global-company-mode)
 
 ; Disable backup files
