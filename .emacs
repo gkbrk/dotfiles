@@ -54,6 +54,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.cshtml\\'" . web-mode))
 
 (setq org-agenda-files '("~/Notebook/"))
 (setq org-agenda-skip-unavailable-files t)
@@ -95,6 +96,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(column-number-mode t)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
  '(custom-enabled-themes (quote (deeper-blue)))
@@ -112,6 +114,7 @@
     (todotxt linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
+ '(show-paren-mode t)
  '(todotxt-file "~/TinySync/todo.txt" nil (todotxt))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
