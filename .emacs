@@ -13,10 +13,10 @@
 (defun fancy-tab (arg)
   (interactive "P")
   (setq this-command last-command)
-  (if (or (eq this-command 'dabbrev-expand) (looking-at "\\_>"))
+  (if (or (eq this-command 'company-complete) (looking-at "\\_>"))
       (progn
-	(setq this-command 'dabbrev-expand)
-	(dabbrev-expand arg))
+	(setq this-command 'company-complete)
+	(company-complete))
     (setq this-command 'indent-for-tab-command)
     (indent-for-tab-command arg)))
 (global-set-key (kbd "TAB") 'fancy-tab)
