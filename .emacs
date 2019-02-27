@@ -23,6 +23,13 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
+(eval-after-load
+ 'company
+ '(add-to-list 'company-backends 'company-omnisharp))
+
+(add-hook 'csharp-mode-hook 'omnisharp-mode)
+(add-hook 'csharp-mode-hook #'company-mode)
+
 ; Disable backup files
 (setq make-backup-files nil)
 
@@ -111,7 +118,7 @@
  '(org-agenda-files (quote ("~/Sync/work/viagogo/work_diary.org")))
  '(package-selected-packages
    (quote
-    (todotxt linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
+    (column-enforce-mode omnisharp todotxt linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(send-mail-function (quote smtpmail-send-it))
  '(show-paren-mode t)
