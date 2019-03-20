@@ -91,7 +91,7 @@
 
 (defun notes ()
   (interactive)
-  (find-file "~/Notebook/notes.org")
+  (find-file "~/TinySync/notes.org")
   )
 
 (custom-set-variables
