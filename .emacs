@@ -123,6 +123,7 @@
  '(send-mail-function (quote smtpmail-send-it))
  '(show-paren-mode t)
  '(todotxt-file "~/TinySync/todo.txt" nil (todotxt))
+ '(tool-bar-mode nil)
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
