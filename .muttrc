@@ -1,0 +1,13 @@
+set folder = ~/Mail/
+set mbox_type = mbox
+set spoolfile=+INBOX
+set sendmail = /home/leonardo/sendmail.py
+set editor = vim
+set edit_headers=yes
+set use_from = yes
+set envelope_from = yes
+set from = leo@gkbrk.com
+alternates @gkbrk\.com$
+set reverse_name = yes
+set sort = threads
+set sort_aux = last-date-received
