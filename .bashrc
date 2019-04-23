@@ -6,7 +6,8 @@ export GOPATH=~/.go
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:~/Android/Sdk/tools/"
 export PATH="$PATH:~/.cargo/bin/"
-export PATH="$PATH:/home/leonardo/.gem/ruby/2.5.0/bin"
+export PATH="$PATH:/home/leonardo/.gem/ruby/2.6.0/bin"
+export PATH="$PATH:~/.local/bin"
 
 export ANDROID_HOME="/home/leonardo/Android/Sdk"
 
