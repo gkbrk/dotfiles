@@ -1,25 +1,19 @@
-#export TERM=xterm-256color
 export TERM=screen-256color
 PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
 
 export GOPATH=~/.go
 export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:~/Android/Sdk/tools/"
 export PATH="$PATH:~/.cargo/bin/"
 export PATH="$PATH:/home/leonardo/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:~/.local/bin"
-
-export ANDROID_HOME="/home/leonardo/Android/Sdk"
 
 # Unlimited bash history
 export HISTFILESIZE=
 export HISTSIZE=
 export HISTCONTROL=erasedups
 
-alias listenmoe="mpv http://listen.moe:9999/stream > /dev/null"
-
-alias server="ssh ubuntu@server.gkbrk.com"
-alias proxy="ssh -D 1080 ubuntu@server.gkbrk.com"
+alias server="ssh core@gkrk.com"
+alias proxy="ssh -D 1080 core@gkbrk.com"
 alias sb="source ~/.bashrc"
 
 cowerinstall() {
@@ -34,7 +28,8 @@ cowerinstall() {
 export TODOTXT_DEFAULT_ACTION=ls
 alias t='todo.sh -d ~/.todo/config'
 
-alias ed='ed -p"🔥 > "'
+alias ed='ed -p"> "'
+alias emacs='emacsclient -nw'
 alias bc='bc -l'
 alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias :wq=exit
