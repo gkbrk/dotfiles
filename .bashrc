@@ -12,7 +12,7 @@ export HISTFILESIZE=
 export HISTSIZE=
 export HISTCONTROL=erasedups
 
-alias server="ssh core@gkrk.com"
+alias server="ssh core@gkbrk.com"
 alias proxy="ssh -D 1080 core@gkbrk.com"
 alias sb="source ~/.bashrc"
 
