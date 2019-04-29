@@ -29,7 +29,6 @@ export TODOTXT_DEFAULT_ACTION=ls
 alias t='todo.sh -n -t -d ~/.config/todo.cfg'
 
 alias ed='ed -p"> "'
-alias emacs='emacsclient -nw'
 alias bc='bc -l'
 alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias :wq=exit
