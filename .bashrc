@@ -26,7 +26,7 @@ cowerinstall() {
 }
 
 export TODOTXT_DEFAULT_ACTION=ls
-alias t='todo.sh -d ~/.todo/config'
+alias t='todo.sh -n -t -d ~/.config/todo.cfg'
 
 alias ed='ed -p"> "'
 alias emacs='emacsclient -nw'
