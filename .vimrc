@@ -9,7 +9,13 @@ set guifont=Monospace\ 12
 set colorcolumn=80 "Draw line at 80 columns
 
 let maplocalleader = ","
-execute pathogen#infect()
+
+" Plugin stuff using vim-plug
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'nanotech/jellybeans.vim' " Colorscheme
+Plug 'rust-lang/rust.vim'
+Plug 'ervandew/supertab'
+call plug#end()
 
 "Pathogen plugins
 "https://github.com/rust-lang/rust.vim.git
@@ -37,7 +43,7 @@ set lazyredraw
 
 set tabstop=4 shiftwidth=4 expandtab "Tabs -> 4 spaces
 
-colorscheme zenburn "Load the color scheme
+colorscheme jellybeans " Load the color scheme
 
 "Search tweaks
 set incsearch "Search before pressing enter, incremental search
