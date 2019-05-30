@@ -31,6 +31,7 @@ alias t='todo.sh -n -t -d ~/.config/todo.cfg'
 alias ed='ed -p"> "'
 alias bc='bc -l'
 alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
+alias vim='nvim'
 alias :wq=exit
 
 org-text() {
