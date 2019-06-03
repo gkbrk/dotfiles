@@ -38,7 +38,7 @@ call plug#end()
 autocmd FileType tex setlocal nocursorline
 autocmd BufNewFile,BufFilePre,BufRead *.txt set filetype=markdown
 
-set number " Show line numbers
+set number relativenumber " Show line numbers
 set wildmenu " Complete Vim commands
 set cursorline " Highlight the cursor line
 
