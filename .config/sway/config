@@ -2,6 +2,10 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
+# Font for titles and status bar
+font pango:monospace 8
+
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -56,6 +60,13 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     repeat_rate 20
     repeat_delay 200
 }
+
+# Volume keybindings
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
