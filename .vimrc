@@ -18,6 +18,7 @@ Plug 'ervandew/supertab'
 Plug 'yggdroot/indentline'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'unblevable/quick-scope'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " Pathogen plugins
@@ -28,6 +29,10 @@ call plug#end()
 " https://github.com/jceb/vim-orgmode.git
 " https://github.com/vim-scripts/utl.vim.git
 " https://github.com/tpope/vim-speeddating.git
+
+" vimwiki/vimwiki
+let g:vimwiki_list = [{'path': '~/TinySync/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_folding = 'expr'
 
 " GUI settings
 :set guioptions-=m  " remove menu bar
