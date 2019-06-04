@@ -6,6 +6,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:~/.cargo/bin/"
 export PATH="$PATH:/home/leonardo/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:~/.local/bin"
+export EDITOR='nvim'
 
 # Unlimited bash history
 export HISTFILESIZE=
