@@ -26,9 +26,6 @@ call plug#end()
 let g:vimwiki_list = [{'path': '~/TinySync/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_folding = 'expr'
 
-" OmniSharp/omnisharp-vim
-let g:OmniSharp_server_stdio = 1
-
 " GUI settings
 :set guioptions-=m  " remove menu bar
 :set guioptions-=T  " remove toolbar
