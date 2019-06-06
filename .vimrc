@@ -19,20 +19,15 @@ Plug 'yggdroot/indentline'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'unblevable/quick-scope'
 Plug 'vimwiki/vimwiki'
+Plug 'vim-airline/vim-airline'
 call plug#end()
-
-" Pathogen plugins
-" https://github.com/rust-lang/rust.vim.git
-" https://github.com/ervandew/supertab.git
-" https://github.com/kien/ctrlp.vim.git
-" https://github.com/othree/html5.vim.git
-" https://github.com/jceb/vim-orgmode.git
-" https://github.com/vim-scripts/utl.vim.git
-" https://github.com/tpope/vim-speeddating.git
 
 " vimwiki/vimwiki
 let g:vimwiki_list = [{'path': '~/TinySync/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_folding = 'expr'
+
+" OmniSharp/omnisharp-vim
+let g:OmniSharp_server_stdio = 1
 
 " GUI settings
 :set guioptions-=m  " remove menu bar
@@ -62,6 +57,10 @@ set incsearch " Search before pressing enter, incremental search
 set ignorecase smartcase " Ignore case when searching, unless capital letters are used
 
 set linebreak " Only break at words
+
+nmap <F2> :bnext<Enter>
+nmap <F3> :bprev<Enter>
+
 
 " Open file explorer
 nmap - :Explore<Enter>
