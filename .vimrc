@@ -13,13 +13,17 @@ let maplocalleader = ","
 " Plugin stuff using vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'nanotech/jellybeans.vim' " Colorscheme
-Plug 'rust-lang/rust.vim'
 Plug 'ervandew/supertab'
 Plug 'yggdroot/indentline'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'unblevable/quick-scope'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+
+" Languages and syntax highlighting
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " vimwiki/vimwiki
@@ -54,6 +58,9 @@ set incsearch " Search before pressing enter, incremental search
 set ignorecase smartcase " Ignore case when searching, unless capital letters are used
 
 set linebreak " Only break at words
+
+" Unmap Ex mode
+nnoremap Q <Nop>
 
 nmap <F2> :bnext<Enter>
 nmap <F3> :bprev<Enter>
