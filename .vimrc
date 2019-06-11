@@ -13,6 +13,7 @@ let maplocalleader = ","
 " Plugin stuff using vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'nanotech/jellybeans.vim' " Colorscheme
+
 Plug 'ervandew/supertab'
 Plug 'yggdroot/indentline'
 Plug 'bronson/vim-trailing-whitespace'
@@ -21,6 +22,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'kien/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
 
 " Languages and syntax highlighting
 Plug 'rust-lang/rust.vim'
@@ -29,6 +31,9 @@ call plug#end()
 " vimwiki/vimwiki
 let g:vimwiki_list = [{'path': '~/TinySync/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_folding = 'expr'
+
+" vim-airline/vim-airline
+let g:airline_powerline_fonts = 1
 
 " GUI settings
 :set guioptions-=m  " remove menu bar
