@@ -27,7 +27,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Languages and syntax highlighting
 Plug 'rust-lang/rust.vim'
-Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 " vimwiki/vimwiki
@@ -36,10 +35,6 @@ let g:vimwiki_folding = 'expr'
 
 " vim-airline/vim-airline
 let g:airline_powerline_fonts = 1
-
-" OmniSharp/omnisharp-vim
-let g:OmniSharp_server_stdio = 1
-let g:deoplete#enable_at_startup = 1
 
 " GUI settings
 :set guioptions-=m  " remove menu bar
