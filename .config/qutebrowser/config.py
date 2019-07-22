@@ -6,6 +6,11 @@
 # Uncomment this to still load settings configured via autoconfig.yml
 # config.load_autoconfig()
 
+# Store cookies. Note this option needs a restart with QtWebEngine on Qt
+# < 5.9.
+# Type: Bool
+c.content.cookies.store = False
+
 # User agent to send. Unset to send the default. Note that the value
 # read from JavaScript is always the global value.
 # Type: String
