@@ -1,7 +1,32 @@
 ; MELPA Packages
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ; ELPA is weird
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
+
+; Packages to auto-install on startup
+(dolist (p '(use-package))
+  (when (not (package-installed-p p)) (package-install p)))
+
+(require 'use-package)
+
+(use-package evil :ensure t
+             :config (evil-mode 1))
+
+(use-package company-try-hard :ensure t)
+(use-package aggressive-indent :ensure t)
+(use-package json-mode :ensure t :mode "\\.json\\'")
+(use-package magit :ensure t)
+(use-package rust-mode :ensure t :mode "\\.rs\\'")
+(use-package csharp-mode :ensure t :mode "\\.cs\\'")
+(use-package haskell-mode :ensure t :mode "\\.hs\\'")
+(use-package markdown-mode :ensure t :mode "\\.md\\'")
+(use-package todotxt :ensure t)
+(use-package linum-relative
+             :ensure t
+             :config (linum-relative-global-mode 1))
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
@@ -27,7 +52,6 @@
  'company
  '(add-to-list 'company-backends 'company-omnisharp))
 
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
 (add-hook 'csharp-mode-hook #'company-mode)
 
 ; Disable backup files
@@ -35,13 +59,10 @@
 
 
 (setq-default fill-column 80)
-(linum-relative-global-mode t) ; Relative line numbers
 (column-number-mode t)
 (show-paren-mode)
 
 ; Evil mode
-(require 'evil)
-(evil-mode 1)
 (global-set-key (kbd "M-=") 'evil-mode)
 
 (setq inferior-lisp-program "sbcl")
@@ -49,45 +70,49 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox-nightly")
 
-                                        ; Web mode
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.cshtml\\'" . web-mode))
+; Web mode
+(use-package web-mode
+             :ensure t
+             :mode ("\\.phtml\\'"
+                    "\\.tpl\\.php\\'"
+                    "\\.[agj]sp\\'"
+                    "\\.as[cp]x\\'"
+                    "\\.erb\\'"
+                    "\\.mustache\\'"
+                    "\\.djhtml\\'"
+                    "\\.html?\\'"
+                    "\\.js\\'"
+                    "\\.css\\'"
+                    "\\.cshtml\\'"))
 
-(setq org-agenda-files '("~/Notebook/"))
-(setq org-agenda-skip-unavailable-files t)
-(setq org-log-done 'time)
 
-(setq org-capture-templates
-  '(("j" "Journal" entry (file+olp+datetree "~/Notebook/notes.org") "* %?\n")))
 
-(defun org-archive-done-tasks ()
-  (interactive)
-  (org-map-entries
-   (lambda ()
-     (org-archive-subtree)
-     (setq org-map-continue-from (outline-previous-heading)))
-   "/DONE" 'file))
+                                        ; org mode
+(use-package org
+  :ensure t
+  :mode ("\\.org\\'" . org-mode)
+  :init
+  (setq org-agenda-skip-unavailable-files t)
+  (setq org-log-done 'time)
 
-(require 'org)
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted) 
+  (defun org-archive-done-tasks ()
+    (interactive)
+    (org-map-entries
+     (lambda ()
+       (org-archive-subtree)
+       (setq org-map-continue-from (outline-previous-heading)))
+     "/DONE" 'file))
 
-(setq org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  (setq org-latex-listings 'minted)
 
-(setq org-src-fontify-natively t)
+  (setq org-latex-pdf-process
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+  (setq org-src-fontify-natively t)
+
+  :config (add-to-list 'org-latex-packages-alist '("" "minted")))
 
 (defun notes ()
   (interactive)
@@ -106,7 +131,7 @@
  '(column-number-mode t)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
     ("89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
@@ -115,12 +140,7 @@
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
- '(org-agenda-files (quote ("~/Sync/work/viagogo/work_diary.org")))
- '(package-selected-packages
-   (quote
-    (column-enforce-mode omnisharp todotxt linum-relative csv-mode toml-mode slime aggressive-indent paredit csharp-mode company-try-hard company json-mode magit neotree web-mode haskell-mode zenburn-theme rust-mode markdown-mode evil)))
- '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
- '(send-mail-function (quote smtpmail-send-it))
+ '(package-selected-packages nil)
  '(show-paren-mode t)
  '(todotxt-file "~/TinySync/todo.txt" nil (todotxt))
  '(tool-bar-mode nil)
@@ -145,8 +165,7 @@
      (320 . "#8CD0D3")
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3")
- '(xterm-mouse-mode t))
+ '(vc-annotate-very-old-color "#DC8CC3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
