@@ -17,22 +17,13 @@ alias server="ssh core@gkbrk.com"
 alias proxy="ssh -D 1080 core@gkbrk.com"
 alias sb="source ~/.bashrc"
 
-cowerinstall() {
-    pushd ~/cower/
-    rm -rfv "$1"
-    cower -d "$1"
-    cd "$1"
-    makepkg -sri
-    popd
-}
-
 export TODOTXT_DEFAULT_ACTION=ls
 alias t='todo.sh -n -t -d ~/.config/todo.cfg'
 
 alias ed='ed -p"> "'
 alias bc='bc -l'
-alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias vim='nvim'
+alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias :wq=exit
 
 org-text() {
@@ -47,24 +38,8 @@ org-search() {
           --eval '(princ (buffer-string))'
 }
 
-notebook() {
-    pushd /home/leonardo/Notebook
-    vim Home.md
-    popd
-}
-
 journal() {
-    vim "$HOME/Notebook/Journal/$(date +%Y-%m-%d).md"
-}
-
-notebook_todo() {
-    echo "\`\`\`" > "$HOME/Notebook/NotebookTasks.md"
-    grep -r "TODO" "$HOME/Notebook" | sed "s@$HOME/Notebook/@@" >> "$HOME/Notebook/NotebookTasks.md"
-    echo "\`\`\`" >> "$HOME/Notebook/NotebookTasks.md"
-}
-
-keychain-lock() {
-    python3 -c 'import secretstorage;bus=secretstorage.dbus_init();secretstorage.get_default_collection(bus).lock()'
+    vim "$HOME/TinySync/Journal/$(date -I)"
 }
 
 stty stop undef
