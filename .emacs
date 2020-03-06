@@ -2,6 +2,13 @@
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ; ELPA is weird
 
+(defun load-directory (dir)
+  (let ((load-it (lambda (f)
+                   (load-file (concat (file-name-as-directory dir) f)))
+                 ))
+    (mapc load-it (directory-files dir nil "\\.el$"))))
+(load-directory "~/.emacs.d/custom/")
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
@@ -17,6 +24,7 @@
 
 (use-package company-try-hard :ensure t)
 (use-package aggressive-indent :ensure t)
+(use-package neotree :ensure t)
 (use-package json-mode :ensure t :mode "\\.json\\'")
 (use-package magit :ensure t)
 (use-package rust-mode :ensure t :mode "\\.rs\\'")
@@ -24,9 +32,20 @@
 (use-package haskell-mode :ensure t :mode "\\.hs\\'")
 (use-package markdown-mode :ensure t :mode "\\.md\\'")
 (use-package todotxt :ensure t)
-(use-package linum-relative
+
+(use-package neotree
              :ensure t
-             :config (linum-relative-global-mode 1))
+             :config (global-set-key [f8] 'neotree-toggle))
+
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
@@ -35,28 +54,12 @@
 (global-set-key (kbd "M--") 'previous-buffer)
 (global-set-key (kbd "C-t") 'ido-switch-buffer)
 
-(defun fancy-tab (arg)
-  (interactive "P")
-  (setq this-command last-command)
-  (if (or (eq this-command 'company-complete) (looking-at "\\_>"))
-      (progn
-	(setq this-command 'company-complete)
-	(company-complete))
-    (setq this-command 'indent-for-tab-command)
-    (indent-for-tab-command arg)))
-(global-set-key (kbd "TAB") 'fancy-tab)
-
-(add-hook 'after-init-hook 'global-company-mode)
-
-(eval-after-load
- 'company
- '(add-to-list 'company-backends 'company-omnisharp))
-
-(add-hook 'csharp-mode-hook #'company-mode)
-
 ; Disable backup files
 (setq make-backup-files nil)
 
+; Relative line numbers
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
 
 (setq-default fill-column 80)
 (column-number-mode t)
@@ -81,13 +84,12 @@
                     "\\.mustache\\'"
                     "\\.djhtml\\'"
                     "\\.html?\\'"
+                    "\\.ejs\\'"
                     "\\.js\\'"
                     "\\.css\\'"
                     "\\.cshtml\\'"))
 
-
-
-                                        ; org mode
+; org mode
 (use-package org
   :ensure t
   :mode ("\\.org\\'" . org-mode)
@@ -103,16 +105,7 @@
        (setq org-map-continue-from (outline-previous-heading)))
      "/DONE" 'file))
 
-  (setq org-latex-listings 'minted)
-
-  (setq org-latex-pdf-process
-        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
-  (setq org-src-fontify-natively t)
-
-  :config (add-to-list 'org-latex-packages-alist '("" "minted")))
+  (setq org-src-fontify-natively t))
 
 (defun notes ()
   (interactive)
@@ -131,23 +124,20 @@
  '(column-number-mode t)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes '(adwaita))
  '(custom-safe-themes
-   (quote
-    ("89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
+   '("89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default))
  '(fci-rule-color "#383838")
  '(inhibit-startup-screen t)
  '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+   '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(package-selected-packages nil)
  '(show-paren-mode t)
  '(todotxt-file "~/TinySync/todo.txt" nil (todotxt))
  '(tool-bar-mode nil)
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
+   '((20 . "#BC8383")
      (40 . "#CC9393")
      (60 . "#DFAF8F")
      (80 . "#D0BF8F")
@@ -164,11 +154,11 @@
      (300 . "#7CB8BB")
      (320 . "#8CD0D3")
      (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
+     (360 . "#DC8CC3")))
  '(vc-annotate-very-old-color "#DC8CC3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 158 :width normal)))))
