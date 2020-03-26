@@ -19,37 +19,27 @@
 
 (require 'use-package)
 
-(use-package evil :ensure t
-             :config (evil-mode 1))
+(use-package evil
+  :ensure t
+  :defer t
+  :config (evil-mode 1))
 
 (use-package company-try-hard :ensure t)
-(use-package aggressive-indent :ensure t)
-(use-package neotree :ensure t)
+(use-package aggressive-indent
+  :ensure t
+  :defer t)
 (use-package json-mode :ensure t :mode "\\.json\\'")
-(use-package magit :ensure t)
+(use-package magit
+  :ensure t
+  :defer t)
 (use-package rust-mode :ensure t :mode "\\.rs\\'")
 (use-package csharp-mode :ensure t :mode "\\.cs\\'")
 (use-package haskell-mode :ensure t :mode "\\.hs\\'")
 (use-package markdown-mode :ensure t :mode "\\.md\\'")
-(use-package todotxt :ensure t)
-
-(use-package neotree
-             :ensure t
-             :config (global-set-key [f8] 'neotree-toggle))
-
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
-(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
-(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
-(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+(use-package todotxt :ensure t :defer t)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
-(ido-mode 1)
 (global-set-key (kbd "M-+") 'next-buffer)
 (global-set-key (kbd "M--") 'previous-buffer)
 (global-set-key (kbd "C-t") 'ido-switch-buffer)
@@ -57,9 +47,7 @@
 ; Disable backup files
 (setq make-backup-files nil)
 
-; Relative line numbers
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode)
+(setq confirm-kill-processes nil)
 
 (setq-default fill-column 80)
 (column-number-mode t)
@@ -131,7 +119,8 @@
  '(inhibit-startup-screen t)
  '(nrepl-message-colors
    '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(typescript-mode prettier-js web-mode use-package todotxt rust-mode neotree markdown-mode magit json-mode haskell-mode evil csharp-mode company-try-hard aggressive-indent))
  '(show-paren-mode t)
  '(todotxt-file "~/TinySync/todo.txt" nil (todotxt))
  '(tool-bar-mode nil)

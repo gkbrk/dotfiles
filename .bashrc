@@ -7,7 +7,6 @@ export HISTFILESIZE=
 export HISTSIZE=
 export HISTCONTROL=erasedups
 
-alias emacs="emacs -nw"
 alias server="ssh root@server.gkbrk.com"
 alias proxy="ssh -D 1080 root@server.gkbrk.com"
 alias sb="source ~/.bashrc"
