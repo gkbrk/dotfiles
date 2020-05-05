@@ -48,6 +48,8 @@
 (setq make-backup-files nil)
 
 (setq confirm-kill-processes nil)
+(global-auto-revert-mode t)
+
 
 (setq-default fill-column 80)
 (column-number-mode t)
@@ -115,7 +117,9 @@
  '(custom-enabled-themes '(adwaita))
  '(custom-safe-themes
    '("89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default))
+ '(display-line-numbers-type 'relative)
  '(fci-rule-color "#383838")
+ '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
  '(nrepl-message-colors
    '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
@@ -150,4 +154,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 158 :width normal)))))
+ '(default ((t (:family "FreeMono" :foundry "GNU " :slant normal :weight normal :height 158 :width normal)))))
