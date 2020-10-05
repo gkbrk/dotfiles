@@ -11,7 +11,11 @@
     (setq package-contents-refreshed t)
     (package-refresh-contents)))
 
-(defun ensure-installed (package)
+(defun ensure-installed-one (package)
   (when (not (package-installed-p package))
     (package-refresh-contents-once)
     (package-install package)))
+
+(defun ensure-installed (&rest packages)
+  (dolist (package packages)
+    (ensure-installed-one package)))
