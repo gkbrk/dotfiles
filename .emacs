@@ -1,62 +1,52 @@
-(defun load-directory (dir)
-  (let ((load-it (lambda (f)
-                   (load-file (concat (file-name-as-directory dir) f)))
-                 ))
-    (mapc load-it (directory-files dir nil "\\.el$"))))
-(load-directory "~/.emacs.d/custom/")
+;;; Welcome to my .emacs file
 
+;; GC trickery
+(setq gc-cons-threshold (eval-when-compile (* 1024 1024 1024)))
+(run-with-idle-timer 2 t (lambda () (garbage-collect)))
+
+;;; At startup, byte-compile every elisp file that changed.
+(add-to-list 'load-path "~/.emacs.d/custom-load/")
+(byte-recompile-directory "~/.emacs.d" 0)
+;(profiler-start 'cpu)
+
+(require 'leo-load)
+
+;;; We will be using the load-idle function to load elisp files based on
+;;; priority. Important config and user-visible changes will be loaded first to
+;;; prevent flickering.
+
+(leo/load-idle 0 "custom/theme")
+
+(run-with-idle-timer 1 nil (lambda () "" (message "Everything in idle-config is initialized")))
+(leo/load-idle 1 "custom/basic-settings")
+(leo/load-idle 1 "custom/move-line")
+(leo/load-idle 1 "custom/relative-lines")
+(leo/load-idle 1 "custom/whitespace")
+(leo/load-idle 1 "custom/windows-fixes")
+(leo/load-idle 1 "custom/multiple-cursors")
+(leo/load-idle 1 "custom/evil-mode")
+(leo/load-idle 1 "custom/wl-clipboard")
+(leo/load-idle 1 "custom/emacs-cleanup")
+
+(require 'leo-packages)
 (ensure-installed
   'aggressive-indent
   'company-try-hard
-  'evil
   'haskell-mode
   'json-mode
   'magit
   'markdown-mode
   'rust-mode
-  'web-mode
-  'yasnippet
-  )
-
-; Theme
-(setq custom-safe-themes t)
-(ensure-installed 'gruber-darker-theme)
-(load-theme 'gruber-darker t)
-
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
-(global-set-key (kbd "M-+") 'next-buffer)
-(global-set-key (kbd "M--") 'previous-buffer)
-(global-set-key (kbd "C-t") 'ido-switch-buffer)
+  'web-mode)
 
 (setq inhibit-startup-screen t)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
-(column-number-mode t)
-(show-paren-mode)
 
 ; Disable backup files
 (setq make-backup-files nil)
-
-(setq confirm-kill-processes nil)
-(global-auto-revert-mode t)
-
-
 (setq-default fill-column 80)
-
-; Evil mode
-(global-set-key (kbd "M-=") 'evil-mode)
-
-(setq inferior-lisp-program "sbcl")
-
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "firefox-nightly")
-
-(defun notes ()
-  (interactive)
-  (find-file "~/TinySync/notes.org")
-  )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -64,3 +54,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka" :foundry "BE5N" :slant normal :weight normal :height 143 :width normal)))))
+
+;(profiler-stop)
+;(profiler-report)
