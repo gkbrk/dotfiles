@@ -7,15 +7,16 @@
 ;;; At startup, byte-compile every elisp file that changed.
 (add-to-list 'load-path "~/.emacs.d/custom-load/")
 (byte-recompile-directory "~/.emacs.d" 0)
-;(profiler-start 'cpu)
+;;(profiler-start 'cpu)
+
+;;(load-theme 'misterioso)
+(load-theme 'adwaita)
 
 (require 'leo-load)
 
 ;;; We will be using the load-idle function to load elisp files based on
 ;;; priority. Important config and user-visible changes will be loaded first to
 ;;; prevent flickering.
-
-(leo/load-idle 0 "custom/theme")
 
 (run-with-idle-timer 1 nil (lambda () "" (message "Everything in idle-config is initialized")))
 (leo/load-idle 1 "custom/basic-settings")
@@ -57,3 +58,10 @@
 
 ;(profiler-stop)
 ;(profiler-report)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(multiple-cursors evil web-mode rust-mode markdown-mode magit json-mode haskell-mode company-try-hard aggressive-indent)))
