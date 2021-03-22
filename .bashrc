@@ -14,6 +14,7 @@ alias sb="source ~/.bashrc"
 alias bc='bc -l'
 alias tarbackup='tar -zcvf "backup-$(date "+%Y-%m-%d-%H-%M").tar.gz"'
 alias :wq=exit
+alias emacs="emacs -nw"
 
 journal() {
     vim "$HOME/TinySync/Journal/$(date -I)"
@@ -28,9 +29,3 @@ stopwatch() {
 
 stty stop undef
 stty start undef
-
-PATH="/home/leo/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/leo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/leo/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/leo/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/leo/perl5"; export PERL_MM_OPT;
