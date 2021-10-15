@@ -10,7 +10,7 @@
 ;;(profiler-start 'cpu)
 
 ;;(load-theme 'misterioso)
-(load-theme 'adwaita)
+;;(load-theme 'adwaita)
 
 (require 'leo-load)
 
@@ -19,6 +19,7 @@
 ;;; prevent flickering.
 
 (run-with-idle-timer 1 nil (lambda () "" (message "Everything in idle-config is initialized")))
+(leo/load-idle 0 "custom/customtheme")
 (leo/load-idle 1 "custom/basic-settings")
 (leo/load-idle 1 "custom/move-line")
 (leo/load-idle 1 "custom/relative-lines")
