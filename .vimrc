@@ -1,69 +1,90 @@
 set nocompatible
-filetype indent plugin on
-syntax on " Syntax highlighting
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-set guifont=Monospace\ 12
-set colorcolumn=80 " Draw line at 80 columns
 
 let maplocalleader = ","
 
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+
 call plug#begin("~/.vim/plugged")
 " Plugin stuff using vim-plug
-Plug 'nanotech/jellybeans.vim' " Colorscheme
-
 Plug 'ervandew/supertab'
-Plug 'yggdroot/indentline'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'unblevable/quick-scope'
-Plug 'vimwiki/vimwiki'
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'preservim/nerdtree'
-Plug 'jceb/vim-orgmode'
+Plug 'github/copilot.vim'
 
 " Languages and syntax highlighting
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-" vimwiki/vimwiki
-let g:vimwiki_list = [{'path': '~/TinySync/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_folding = 'expr'
+let g:copilot_filetypes = {
+            \ '*': v:true,
+            \ }
 
-" GUI settings
-:set guioptions-=m  " remove menu bar
-:set guioptions-=T  " remove toolbar
-:set guioptions-=r  " remove right-hand scroll bar
-
-" Make latex fast again
-autocmd FileType tex setlocal nocursorline
-
-set number relativenumber " Show line numbers
-set wildmenu " Complete Vim commands
-set cursorline " Highlight the cursor line
-
-" Mouse
-set mouse=a
-
-xnoremap ""y y:call system("wl-copy", @")<cr>
-nnoremap ""p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
-
+set autoindent
+set autoread
+set colorcolumn=80
+set cursorline
+set encoding=utf-8
+set expandtab
+set hlsearch
+set ignorecase
+set ignorecase
+set incsearch
+set laststatus=2
 set lazyredraw
+"set mouse=a
+set nofoldenable
+set noswapfile
+set nowrap
+set number
+set relativenumber
+set ruler
+set scrolloff=5
+set shiftwidth=4
+set sidescroll=5
+set smartcase
+set smartcase
+set splitbelow
+set splitright
+set t_Co=256
+set tabstop=4
+set wildmenu
 
-set tabstop=4 shiftwidth=4 expandtab " Tabs -> 4 spaces
+syntax enable
+colorscheme sorbet
 
-colorscheme jellybeans " Load the color scheme
+" Keybinds
+nnoremap cc :center<CR>
+" inoremap kj <Esc>
 
-" Search tweaks
-set incsearch " Search before pressing enter, incremental search
-set ignorecase smartcase " Ignore case when searching, unless capital letters are used
+                           " Random Emacs keybinds
 
-set linebreak " Only break at words
+" Save and quit
+nnoremap <C-a> 0
+nnoremap <C-e> $
+inoremap <C-a> <Esc>0i
+inoremap <C-e> <Esc>$a
+vnoremap <C-a> 0
+vnoremap <C-e> $
+
+execute "set <M-q>=\eq"
+nmap <M-q> gwip
+imap <M-q> <Esc>gwipa
 
 imap <C-x><C-f> <Esc>:Explore<Enter>
 nmap <C-x><C-f> :Explore<Enter>
+
+" Make latex fast again
+autocmd FileType tex setlocal nocursorline
 
 " Unmap Ex mode
 nnoremap Q <Nop>
@@ -74,10 +95,6 @@ nmap <F3> :bprev<Enter>
 " Open file explorer
 map <C-n> :NERDTreeToggle<CR>
 nmap - :Explore<CR>
-
-" Hard-break paragraph
-nmap <M-q> gwip
-imap <M-q> <Esc>gwipa
 
 " Tab keymaps
 nmap tt :tabnew<Enter>
